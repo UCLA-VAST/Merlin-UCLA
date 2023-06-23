@@ -111,14 +111,14 @@ All pragmas are applied above the loop contrary to Xilinx Vitis.
 ##### Mandatory Pragma
 Please add `#pragma ACCEL kernel` above the main function. For example:
 
-```sh
+```C
 #pragma ACCEL kernel
 void kernel_bicg(int m,int n,float A[2100][1900],float s[1900],float q[2100],float p[1900],float r[2100])
 {
   int i;
   int j;    
     for (i = 0; i < 1900; i++) {
-      s[i] = ((float )0);
+      s[i] = 0;
     }
     for (i = 0; i < 2100; i++) {
       q[i] = 0.0;
