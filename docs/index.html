@@ -28,6 +28,8 @@
                                                         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css" />
                                                             <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shCore.css" media="all">
                                                                 <link rel="stylesheet" type="text/css" href="js/syntax-highlighter/styles/shThemeRDark.css" media="all">
+                                                                <link href="css/shCore.css" rel="stylesheet" type="text/css" />
+  <link href="css/shThemeDefault.css" rel="stylesheet" type="text/css" />
                                                                     
                                                                     <!-- CUSTOM -->
                                                                     <link rel="stylesheet" type="text/css" href="css/custom.css">
@@ -210,9 +212,12 @@
                                     <!-- <p>Lorem the It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
                                     
                                     <h4>Bootstrap Grid System</h4> -->
-                                    
+                                    <pre class="brush: bash">
+                                    docker pull ghcr.io/ucla-vast/merlin-ucla:latest
+                                    imagename="ghcr.io/ucla-vast/merlin-ucla:latest";
+                                    docker run -it $imagename bash  
+                                    </pre>
 
-                                    
                                 </div>
                                 
                             </div>
@@ -257,17 +262,53 @@
                             </div>
                             
                             
+                            To Pipeline a loop and fully unrolled the loops innermost
+                            <pre class="brush: cpp">
+                                #pragma ACCEL PIPELINE FLATTEN
+                                for (int i = 0; i < 10; i++) {
+                                    for (int j = 0; j < 10; j++){
+                                        a[i][j] = b[i][j] + c[i][j];
+                                    }
+                                }
+                             </pre>
 
-                            <!-- <div class="code-box">
-                                <pre><code>
-                                  <span class="keyword">#include</span> <span class="string">&lt;stdio.h&gt;</span>
-                                  
-                                  <span class="keyword">int</span> <span class="keyword">main</span>() {
-                                      <span class="keyword">printf</span>(<span class="string">"Hello, world!"</span>);
-                                      <span class="keyword">return</span> 0;
-                                  }
-                                </code></pre>
-                              </div> -->
+                             which is equivalent to:
+
+
+                             <pre class="brush: cpp">
+                                #pragma ACCEL PIPELINE FLATTEN
+                                for (int i = 0; i < 10; i++) {
+                                #pragma ACCEL parallel
+                                    for (int j = 0; j < 10; j++){
+                                        a[i][j] = b[i][j] + c[i][j];
+                                    }
+                                }
+                             </pre>
+                             
+
+                             For Coarse and Fine Grained unrolling with factor
+                            <pre class="brush: cpp">
+                                #pragma ACCEL PARALLEL FACTOR=2
+                                for (int i = 0; i < 10; i++) {
+                                    a[i] = b[i] + c[i];
+                                }
+                             </pre>
+
+                             To fully unrolled the loop you can put the factor to the trip count of the loop
+                            <pre class="brush: cpp">
+                                #pragma ACCEL PARALLEL FACTOR=10
+                                for (int i = 0; i < 10; i++) {
+                                    a[i] = b[i] + c[i];
+                                }
+                             </pre>
+
+                             or just don't precise the factor
+                             <pre class="brush: cpp">
+                                 #pragma ACCEL PARALLEL 
+                                 for (int i = 0; i < 10; i++) {
+                                     a[i] = b[i] + c[i];
+                                 }
+                              </pre>
                             
                             
                         </section>
@@ -367,6 +408,8 @@
         <script src="js/syntax-highlighter/scripts/shBrushCss.js"></script>
         <script src="js/syntax-highlighter/scripts/shBrushJScript.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/prism.min.js"></script>
+        <script src="js/syntax-highlighter/scripts/shBrushCpp.js"></script>
+        <script src="js/syntax-highlighter/scripts/shBrushBash.js"></script>
         
     </body>
     
