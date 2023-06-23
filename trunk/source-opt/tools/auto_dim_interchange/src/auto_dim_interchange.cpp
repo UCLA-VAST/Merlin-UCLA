@@ -1428,7 +1428,7 @@ int CAutoDimInterchange::
                                                &invalid_reason)) == 0);
     }
 
-    if (invalid_set == 0) {
+    if (invalid_set != 0) {
       output.insert(pair<set<void *>, set<int>>(alias_set, dim_set));
       //  cout << "   -- " ;
       //  for (auto array : alias_set) cout << ast->_up(array) << ",";
@@ -1934,7 +1934,7 @@ int CAutoDimInterchange::auto_dim_interchange_filter_associated_arrays(
       }
     }
 
-    if (invalid_set == 0) {
+    if (invalid_set != 0) {
       output.insert(pair<set<void *>, set<int>>(alias_set, dim_set));
       cout << "   -- ";
       for (auto array : alias_set) {
