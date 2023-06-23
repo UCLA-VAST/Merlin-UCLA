@@ -726,6 +726,9 @@ class CSageCodeGen {
   /************* create const expression **************/
   void *CreateConst(void *val_, int const_type = V_SgIntVal,
                     void *bindNode = nullptr);
+  void *CreateConst(long long value_, void *bindNode = nullptr) {
+     return CreateConst((int64_t)value_, bindNode);
+   };
   void *CreateConst(int value_, void *bindNode = nullptr);
   void *CreateConst(int64_t value_, void *bindNode = nullptr);
   void *CreateConst(int16_t value_, void *bindNode = nullptr);
