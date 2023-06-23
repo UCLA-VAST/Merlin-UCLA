@@ -1,7 +1,7 @@
 #######################################
-# Merlin 
+# Merlin
 #######################################
-export MERLIN_COMPILER_HOME=/path/to/merlin-compiler/trunk
+export MERLIN_COMPILER_HOME=/opt/merlin/sources/merlin-compiler/trunk
 
 export MERLIN_PATH=$MERLIN_COMPILER_HOME/source-opt/lib/
 export llvm_path=$MERLIN_PATH/llvm6.0.0
@@ -20,10 +20,19 @@ export RAPIDJSON_ROOT_DIR=$rjson_path
 export GCC_ROOT_DIR=$MERLIN_PATH/gcc4.9.4
 export BOOST_ROOT=$boost_path
 
+export LLVM_ROOT_DIR=/opt/merlin/llvm6-install
+export CLANG_ROOT_DIR=/opt/merlin/llvm6-install
+export ROSE_ROOT_DIR=/opt/rose/default/install
+## For polyopt install.
+export ROSE_ROOT="$ROSE_ROOT_DIR";
+export GCC_ROOT_DIR=/usr
+export BOOST_ROOT=$ROSE_ROOT_DIR
 export PATH=$gcc_path/bin/:$PATH
 export PATH=$llvm_path/bin/:$PATH
 
 #lib32 if lib64 is not available
-export LD_LIBRARY_PATH=$gcc_path/lib64:$LD_LIBRARY_PATH
+export LD_LIBRARY_PATH=$gcc_path/lib64:$BOOST_ROOT/lib:$LD_LIBRARY_PATH
 
 export PATH=$MERLIN_COMPILER_HOME/build/bin:$PATH
+
+

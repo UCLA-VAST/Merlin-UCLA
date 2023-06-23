@@ -27,7 +27,8 @@ set(CMAKE_CXX_COMPILER "${LLVM_ROOT_DIR}/bin/clang++")
 project(Merlin)
 
 # For FindLLVM and FindBoost
-find_package(Boost 1.67 REQUIRED
+set(Boost_NO_SYSTEM_PATHS ON)
+find_package(Boost 1.67 REQUIRED 
               COMPONENTS regex filesystem thread system)
 #find_package(JNI REQUIRED)
 find_package(Threads)
@@ -108,7 +109,7 @@ set(BUILD_VERSION "${GIT_VERSION}.${GIT_REV_COUNT}")
 message(STATUS "build version: ${BUILD_VERSION}")
 message(STATUS "build version date: ${BUILD_DATE}")
 
-set(CMAKE_CXX_FLAGS "-Wall -Wno-c++17-extensions")
+set(CMAKE_CXX_FLAGS "-Wall -Wno-c++17-extensions -I${ROSE_ROOT_DIR}/include")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBUILD_VERSION=\"\\\"${BUILD_VERSION}\"\\\"")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DBUILD_DATE=\"\\\"${BUILD_DATE}\"\\\"")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} --gcc-toolchain=${GCC_ROOT_DIR}")

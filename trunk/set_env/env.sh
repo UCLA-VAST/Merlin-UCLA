@@ -10,7 +10,7 @@ if [ -z "$WITH_DOCKER" ]; then
   # -reset_ld_path will be automatically called by mars_env_loader, which messes
   # the environment settings up. 
   if [ "$1" == "-reset_ld_path" ]; then
-    export LD_LIBRARY_PATH=
+    export LD_LIBRARY_PATH="$POLYOPT_LD_LIBRARY_PATH:$VITIS_PYTHON_27_LIBRARY_PATH";
   fi
   if [ -d $MERLIN_COMPILER_HOME/source-opt/lib/boost_1_53_0/lib ]; then
     export LD_LIBRARY_PATH=$MERLIN_COMPILER_HOME/source-opt/lib/boost_1_53_0/lib:$LD_LIBRARY_PATH
