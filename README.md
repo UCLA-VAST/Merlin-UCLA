@@ -1,10 +1,5 @@
 # Merlin-UCLA
 
-
-### Documentation
-
-Please visit the website: [Merlin-UCLA](https://ucla-vast.github.io/Merlin-UCLA/)
-
 ### Use Merlin-UCLA with Docker
 
 #### Download 
