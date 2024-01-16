@@ -157,6 +157,8 @@ If factor is not specify the loop is fully unrolled.
 
 The loop bellow the pragma will be pipeline and the innermost loop will be fully unrolled.
 
+Note: `#pragma ACCEL pipeline flatten` can also be use as `#pragma ACCEL pipeline` if all the innermost loop are fully unrolled.
+
 ###### Tile 1D / Strip mining
 
 `#pragma ACCEL tile factor=<tile size>`
@@ -175,4 +177,4 @@ The transfer from off-chip to on-chip will be done at the position of the pragma
 
 The communication of the array will be done at the position of the pragma and transfer with double buffer.
 
-Note: `#pragma ACCEL pipeline` can also be use as `#pragma ACCEL pipeline flatten` if all the innermost loop are fully unrolled.
+
